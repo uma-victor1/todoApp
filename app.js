@@ -10,7 +10,7 @@ var checked = "fa-check-circle";
 var unChecked = "fa-circle-thin";
 var line_through = "lineThrough";
 var LIST = void 0,
-    id = void 0;
+  id = void 0;
 var DATA = localStorage.getItem("TODO");
 if (DATA) {
   LIST = JSON.parse(DATA);
@@ -48,7 +48,18 @@ function addTodo(toDo, id, done, trash) {
   var Done = done ? checked : unChecked;
   var Line = done ? line_through : "";
 
-  var text = "<li class=\"item\">\n  <i class=\"fa " + Done + "\n   co\" job = \"complete\" id = \"" + id + "\"></i>\n  <p class=\"text " + Line + "\">" + toDo + "</p>\n  <i class=\"fa fa-trash-o de\" job = \"delete\" id = \"" + id + "\"></i>\n  </li>";
+  var text =
+    '<li class="item">\n  <i class="fa ' +
+    Done +
+    '\n   co" job = "complete" id = "' +
+    id +
+    '"></i>\n  <p class="text ' +
+    Line +
+    '">' +
+    toDo +
+    '</p>\n  <i class="fa fa-trash-o de" job = "delete" id = "' +
+    id +
+    '"></i>\n  </li>';
   var position = "beforeend";
   list.insertAdjacentHTML(position, text);
 }
@@ -60,7 +71,7 @@ function TODO() {
       name: toDo,
       id: id,
       done: false,
-      trash: false
+      trash: false,
     });
 
     input.value = "";
@@ -117,3 +128,47 @@ clear.addEventListener("click", function () {
 var today = new Date();
 var options = { weekday: "long", month: "short", day: "numeric" };
 date.innerHTML = today.toLocaleDateString("en-US", options);
+
+function ODO() {
+  var toDo = input.value;
+  if (toDo) {
+    addTodo(toDo, id, false, false);
+    LIST.push({
+      name: toDo,
+      id: id,
+      done: false,
+      trash: false,
+    });
+
+    input.value = "";
+    localStorage.setItem("TODO", JSON.stringify(LIST));
+    id++;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+function TDO() {
+  var toDo = input.value;
+  if (toDo) {
+    addTodo(toDo, id, false, false);
+    LIST.push({
+      name: toDo,
+      id: id,
+      done: false,
+      trash: false,
+    });
+
+    input.value = "";
+    localStorage.setItem("TODO", JSON.stringify(LIST));
+    id++;
+  }
+}
